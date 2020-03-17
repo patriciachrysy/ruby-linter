@@ -5,24 +5,24 @@ class RubyFile
   def initialize(filename)
       @name = filename
       @lines =  []
-      self.set_lines
+      set_lines
   end
 
   def close_file
-    File.close(@filename)
+    File.close(@name)
   end
 
   private
 
   def open_file
-    File.open(@filename)
+    File.open(@name)
   end
 
   def set_lines
-    file = self.open_file
+    file = open_file
     all_lines = file.readlines.map(&:chomp)
     all_lines.each_with_index do |value, index|
-      line = Line.new(index, value)
+      line = Line.new(index+1, value, @name)
       @lines << line
     end
   end

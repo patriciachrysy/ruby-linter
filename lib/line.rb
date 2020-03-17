@@ -1,9 +1,10 @@
 class Line
-    attr_reader :number, :content, :max_length
+    attr_reader :number, :content, :max_length, :filename
 
-    def initialize(number, content)
+    def initialize(number, content, filename)
         @number = number
         @content = content
+        @filename = filename
         @max_length = 80
     end
 
@@ -27,18 +28,18 @@ class Line
 
     def opening_line?
         ans = false
-        partern_one = Regexp.new("^(module|class|def)")
-        pattern_two = Regexp.new("^[\s]*[\W|\w]+\sdo")
-        array = ['while', 'loop', 'if', 'unless', 'until']
+        pattern_one = /^[\s]*(module|class|def)/
+        pattern_two = /^[\s]*[\W|\w]+\sdo/
+        array = ['while', 'loop', 'if', 'unless', 'until', 'for']
         first = self.get_words[0]
-        if partern_one.match?(@content) || partern_two.match?(@content) || array.include?(first)
+        if pattern_one.match?(@content) || pattern_two.match?(@content) || array.include?(first)
             ans = true
         end
         ans
     end
 
     def closing_line?
-        partern = Regexp.new("^[\s]*end[\s]*$")
-        partern.match?(@content) ? true : false 
+        pattern = /^[\s]*end[\s]*$/
+        pattern.match?(@content) ? true : false
     end
 end

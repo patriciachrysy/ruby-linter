@@ -15,10 +15,10 @@ module CheckGlobalSyntaxHelper
             if line.opening_line?
                 open_lines += 1
             elsif line.closing_line?
-                close_lines += 2
+                close_lines += 1
             end
         end
-        last_line = file.lines[file.lines.length -1]
+        last_line = file.lines[(file.lines.length) -1]
         if open_lines > close_lines
             state = self.error_shooter(last_line, "Missing a 'end' closure in this file")
         elsif open_lines < close_lines
@@ -30,8 +30,8 @@ module CheckGlobalSyntaxHelper
     def self.check_spaces(line)
         state = false
         pattern = /^[\s]+(class|module|require|require_relative)/
-        if line.opening_line? && pattern.match?(line)
-            state = self.error_shooter(line, "Useless space before class/module declaration")
+        if pattern.match?(line.content)
+            state = self.error_shooter(line, "Useless space before class/module/require declaration")
         end 
         state
     end

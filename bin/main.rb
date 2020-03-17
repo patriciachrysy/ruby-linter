@@ -1,26 +1,27 @@
 #!/usr/bin/env ruby
 
-require_relative '../lib/ruby_file'
-require_relative '../lib/modules/check_global_syntax_helper'
+require_relative '../lib/modules/file_check'
+require_relative '../lib/modules/lint_helper'
 
 errors = []
 if ARGV.length>0
     path = ARGV[0]
-    puts path
     regex = /^[\W|\w]+.rb$/
     if regex.match?(path)
-        puts "The path matches the regex"
-        file = RubyFile.new(path)
-        res = CheckGlobalSyntaxHelper.check_open_end(file)
-        puts res
-        error << res if res
+        LintHelper.start_linting_file(path, errors)  
     else
-        #open the folder and loop
+        LintHelper.start_linting_dir(path, errors)
     end
 else
-    files = Dir["./**/*.rb"]
-    #open and loop on files
+    files = FileCheck.content_ruby_files
+    if files 
+        LintHelper.lint_local(files, errors) 
+    else
+        puts files
+    end
 end
 
-puts errors.length
-#errors.each {|err| puts err}
+if errors
+    errors.each {|err| puts "#{err.type} in file #{err.line.filename}:on line #{err.line.number}, #{err.message}"}
+    puts "#{errors.length} errors found"
+end
