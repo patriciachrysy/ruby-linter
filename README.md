@@ -2,22 +2,28 @@
 
 > Ruby code linter
 
+![screenshot](./app_screenshot.png)
+
 This is a basic and simple linter to help you check your ruby code. These are the good and bad it checks on:
-- Respect of CamelCase and namespacing for modules, class and method name
+#### Respect of CamelCase and namespacing for modules, class and method name
    ** Bad **
    `class myClass`
    ** Good **
    `class MyClass`
-- Respect of syntax for condition and itteration declaration
+#### Respect of syntax for condition and itteration declaration
    ** Bad **
    `ifmycondition` or `myarray .times do {|i| print i}`
    ** Good **
    `if mycondition` or `myarray.times do |i|` or `myarray.times {|i| print i}`
-- Corresponding end for each oppening line
+#### Corresponding end for each oppening line
    ** Bad **
    `class MyClass def my_function end` 
    ** Good **
    `class MyClass def my_function end end`
+
+> Watch the presentation video.
+
+[![screenshot](./app_video.png)](https://www.loom.com/share/926ffc82fdad473f9539cfca7a89eeb9)
 
 ## Built With
 
