@@ -14,7 +14,7 @@ if ARGV.length.positive?
   end
 else
   files = FileCheck.content_ruby_files
-  if files
+  if !files.is_a?(String)
     LintHelper.lint_local(files, errors)
   else
     puts files

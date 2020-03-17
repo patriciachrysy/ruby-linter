@@ -5,7 +5,7 @@ class Line
     @number = number
     @content = content
     @filename = filename
-    @max_length = 80
+    @max_length = 160
   end
 
   def words

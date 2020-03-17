@@ -22,10 +22,10 @@ module FileCheck
   def self.content_ruby_files(path = nil)
     if path
       files = Dir["#{path}/**/*.rb"]
-      files.empty? ? files : "No ruby files found in #{path} directory"
+      !files.empty? ? files : "No ruby files found in #{path} directory"
     else
       files = Dir['./**/*.rb']
-      files.empty? ? files : 'No ruby files found in this directory'
+      !files.empty? ? files : 'No ruby files found in this directory'
     end
   end
 end

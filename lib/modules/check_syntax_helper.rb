@@ -6,7 +6,7 @@ module CheckSyntaxHelper
     error.raise_syntax_error(message)
   end
 
-  def state_prec(tool)
+  def self.state_prec(tool)
     "The #{tool} declaration is incorrect, check it again"
   end
 

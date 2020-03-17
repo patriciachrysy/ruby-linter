@@ -8,7 +8,7 @@ module PreferenceHelper
 
   def self.each_against_for(line)
     state = false
-    state = error_shooter(line, "Prefer using 'each' instead of for") if line.get_words.include?('for')
+    state = error_shooter(line, "Prefer using 'each' instead of for") if line.words.include?('for')
     state
   end
 

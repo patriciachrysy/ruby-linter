@@ -1,8 +1,23 @@
-# Advance building blocks in Ruby
+# Ruby Capstone project
 
-> Bubble Sorting
+> Ruby code linter
 
-Bubble sorting algorithm in Ruby.
+This is a basic and simple linter to help you check your ruby code. These are the good and bad it checks on:
+- Respect of CamelCase and namespacing for modules, class and method name
+   ** Bad **
+   `class myClass`
+   ** Good **
+   `class MyClass`
+- Respect of syntax for condition and itteration declaration
+   ** Bad **
+   `ifmycondition` or `myarray .times do {|i| print i}`
+   ** Good **
+   `if mycondition` or `myarray.times do |i|` or `myarray.times {|i| print i}`
+- Corresponding end for each oppening line
+   ** Bad **
+   `class MyClass def my_function end` 
+   ** Good **
+   `class MyClass def my_function end end`
 
 ## Built With
 
@@ -25,25 +40,23 @@ To get a local copy up and running follow these simple example steps.
 ### Setup
 
 - Clone the repository on your local machine
-- cd into the folder, find the ibubble_sort.rb file an open it in code editor
 
 ### Install
 
-- Install VSCode or any code editor you like
+- type this in order to install colorize gem: `gem install colorize`
 - Install Ruby(most recent version)
 - Run this command on your terminal in order to install rubocop: gem install rubocop 
+- Run this command in order to get make the project file runable:
+   `chmod +x path_to_the_linter_project/bin/main.rb`
 
 ### Usage
 
 ### Run tests
 
-- add code lines to bubble_sort.rb file
-   * `p bubble_sort([4, 3, 78, 2, 0, 2])` (sort in ascending order)
-   * `p bubble_sort(["hi","hello","hey"])` (sort in alphabetic order)
-   * `p bubble_sort_by([4, 3, 78, 2, 0, 2]) { |first, second| first <=> second }` (sort in ascending order)
-   * `p bubble_sort_by(["hi","hello","hey"]) { |first, second| first <=> second }` (sort in alphabetic order)
-   * `p bubble_sort_by(["hi","hello","hey"]) { |first, second| first.length - second.length }`(sort in ascending string length order)
-- run the file using "ruby filename" command
+You can run the linter on a file, a folder or the current folder by typing this command:
+- `./path_to_the_linter_project/bin/main.rb myfile.rb` for a particular file
+- `./path_to_the_linter_project/bin/main.rb myfolder` for all the ruby files in a particular folder
+- `./path_to_the_linter_project/bin/main.rb` for all the ruby files in the current folder
 
 
 ## Authors
@@ -53,12 +66,6 @@ To get a local copy up and running follow these simple example steps.
 - Github: [@githubhandle](https://github.com/patriciachrysy)
 - Twitter: [@twitterhandle](https://twitter.com/ManezeuP)
 - Linkedin: [linkedin](https://www.linkedin.com/in/manezeu-patricia-chrystelle-095072118/)
-
-👤 **Theophile Kango**
-
-- Github: [@githubhandle](https://github.com/Theophile-Kango)
-- Twitter: [@twitterhandle](https://twitter.com/Theophadh)
-- Linkedin: [linkedin](https://www.linkedin.com/in/theophile-kango-b6b580194/)
 
 ## 🤝 Contributing
 
