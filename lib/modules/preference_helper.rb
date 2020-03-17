@@ -18,7 +18,7 @@ module PreferenceHelper
 
     def self_check_module(file)
         state = false
-        pattern = Regexp.new("^[\s]+(class|module)")
+        pattern = /^[\s]+(class|module)/
         count = 0
         file.lines.each {|line| count += 1 if pattern.match?(line)}
         if count > 1

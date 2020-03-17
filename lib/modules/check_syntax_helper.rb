@@ -8,7 +8,7 @@ module CheckSyntaxHelper
     end
 
     def self.check_cond_syntax(line)
-        reg = Regexp.new("^[\s]*(if|unless)\s[\w]+[\s]*$")
+        reg = /^[\s]*(if|unless)\s[\w]+[\s]*$/
         state = true
         unless reg.match?(line)
             state = self.error_shooter(line, "The condition declaration is incorrect, check it again")
@@ -17,7 +17,7 @@ module CheckSyntaxHelper
     end
 
     def self.check_loop_syntax(line)
-        reg = Regexp.new("^[\s]*(loop)\s(do|{(\W|\w)+})[\s]*$")
+        reg = /^[\s]*(loop)\s(do|{(\W|\w)+})[\s]*$/
         state = true
         unless reg.match?(line)
             error = Error.new(line)
@@ -27,7 +27,7 @@ module CheckSyntaxHelper
     end
 
     def self.check_while_until_syntax(line)
-        reg = Regexp.new("^[\s]*(while|until)\s(\w|\W)+[\s]*$")
+        reg = /^[\s]*(while|until)\s(\w|\W)+[\s]*$/
         state = true
         unless reg.match?(line)
             error = Error.new(line)
@@ -37,7 +37,7 @@ module CheckSyntaxHelper
     end
 
     def self.check_for_syntax(line)
-        reg = Regexp.new("^[\s]*(for)\s(\w|\W)+\s(in)\s(\w|\W)+[\s]*$")
+        reg = /^[\s]*(for)\s(\w|\W)+\s(in)\s(\w|\W)+[\s]*$/
         state = true
         unless reg.match?(line)
             error = Error.new(line)
@@ -47,7 +47,7 @@ module CheckSyntaxHelper
     end
 
     def self.check_times_syntax(line)
-        reg = Regexp.new("^[\s]*(\W|\w)+\.times\s(do\s\|(\W|\w)+\||{(\W|\w)+})[\s]*$")
+        reg = /^[\s]*(\W|\w)+\.times\s(do\s\|(\W|\w)+\||{(\W|\w)+})[\s]*$/
         state = true
         unless reg.match?(line)
             error = Error.new(line)

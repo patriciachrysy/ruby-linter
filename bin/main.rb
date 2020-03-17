@@ -8,8 +8,6 @@ if ARGV.length>0
     path = ARGV[0]
     puts path
     regex = /^[\W|\w]+.rb$/
-    puts regex
-    puts regex.match?(path)
     if regex.match?(path)
         puts "The path matches the regex"
         file = RubyFile.new(path)
