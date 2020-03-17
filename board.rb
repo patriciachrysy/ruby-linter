@@ -3,7 +3,7 @@ class Board
   attr_reader :arr, :win_comb
   def initialize
     @arr = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
-    @win_comb = [[1, 2, 3], [4, 5, 6], [7, 8, 9], [1, 4, 7], [2, 5, 8], [3, 6, 9], [1, 5, 9], [3, 5, 7]] kjfjfkfkf fkfkkfkflflfl fkkfkfkkfkf kfkfkfkfkfkf fkfkfkfkfk
+    @win_comb = [[1, 2, 3], [4, 5, 6], [7, 8, 9], [1, 4, 7], [2, 5, 8], [3, 6, 9], [1, 5, 9], [3, 5, 7]]
   end
 
   def filled_board
@@ -18,7 +18,7 @@ class Board
     res = check_pos(position)
     if res
       i = 0
-      while
+      while i < @arr.length
         j = 0
         while j < @arr.length
           mark(i, j, position, player)
@@ -57,10 +57,5 @@ class Board
       res = true if elt.any?(position)
     end
     res
-  end
-end
-
-class MyClass
-  def Love
   end
 end

@@ -3,9 +3,9 @@ require_relative 'line'
 class RubyFile
   attr_reader :name, :lines
   def initialize(filename)
-      @name = filename
-      @lines =  []
-      set_lines
+    @name = filename
+    @lines = []
+    set_lines
   end
 
   def close_file
@@ -22,7 +22,7 @@ class RubyFile
     file = open_file
     all_lines = file.readlines.map(&:chomp)
     all_lines.each_with_index do |value, index|
-      line = Line.new(index+1, value, @name)
+      line = Line.new(index + 1, value, @name)
       @lines << line
     end
   end
