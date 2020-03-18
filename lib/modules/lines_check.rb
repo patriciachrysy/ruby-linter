@@ -40,7 +40,7 @@ module LinesCheck
     errors
   end
 
-  # rubocop:disable Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
+  # rubocop:disable Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity, Style/RegexpLiteral
   def self.check_syntax(errors, line)
     if /^([^"\/_-]*(\s|=))*(if|unless)/.match?(line.content)
       line_res = CheckSyntaxHelper.check_cond_syntax(line)
@@ -60,7 +60,7 @@ module LinesCheck
     end
     errors
   end
-  # rubocop:enable Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
+  # rubocop:enable Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity, Style/RegexpLiteral
 
   def self.check_pref(errors, line)
     line_res = PreferenceHelper.each_against_for(line)
