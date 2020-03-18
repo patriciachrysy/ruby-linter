@@ -42,19 +42,19 @@ module LinesCheck
 
   # rubocop:disable Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
   def self.check_syntax(errors, line)
-    if line.content.include?('if') || line.content.include?('unless')
+    if /^([^"\/_-]*(\s|=))*(if|unless)/.match?(line.content)
       line_res = CheckSyntaxHelper.check_cond_syntax(line)
       errors << line_res if line_res
-    elsif line.content.include?('loop')
+    elsif /^[^\w"\/_-]*(loop)/.match?(line.content)
       line_res = CheckSyntaxHelper.check_loop_syntax(line)
       errors << line_res if line_res
-    elsif line.content.include?('while') || line.content.include?('until')
+    elsif /^[^\w"\/_-]*(while|until)/.match?(line.content)
       line_res = CheckSyntaxHelper.check_while_until_syntax(line)
       errors << line_res if line_res
-    elsif line.content.include?('for')
+    elsif /^[^\w"\/_-]*(for)/.match?(line.content)
       line_res = CheckSyntaxHelper.check_for_syntax(line)
       errors << line_res if line_res
-    elsif line.content.include?('.times')
+    elsif /^[^"\/_-]*(\.times)({|\s)+/.match?(line.content)
       line_res = CheckSyntaxHelper.check_times_syntax(line)
       errors << line_res if line_res
     end

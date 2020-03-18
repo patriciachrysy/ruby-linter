@@ -28,11 +28,12 @@ class Line
 
   def opening_line?
     ans = false
-    pattern_one = /^[\s]*(module|class|def)/
+    pattern_one = /^[\s]*(module|class|def)[\s]+/
     pattern_two = /^[\s]*[\W|\w]+\sdo/
     array = %w[while loop if unless until for]
     first = words[0]
-    ans = true if pattern_one.match?(@content) || pattern_two.match?(@content) || array.include?(first)
+    is_cond = /^[\s]*(\w|\W)+=[\s]*(if|unless)/.match?(@content)
+    ans = true if pattern_one.match?(@content) || pattern_two.match?(@content) || array.include?(first) || is_cond
     ans
   end
 

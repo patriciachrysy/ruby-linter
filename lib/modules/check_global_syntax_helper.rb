@@ -28,7 +28,7 @@ module CheckGlobalSyntaxHelper
 
   def self.check_spaces(line)
     state = false
-    pattern = /^[\s]+(class|module|require|require_relative)/
+    pattern = /^[\s]+(class|module|require|require_relative)[\s]+/
     state = error_shooter(line, 'Useless space before class/module/require declaration') if pattern.match?(line.content)
     state
   end
